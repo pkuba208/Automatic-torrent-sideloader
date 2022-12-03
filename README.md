@@ -4,10 +4,6 @@ The steps to use my script:
 
 Type in the commands:
 
-sudo apt install adb
-
-
-sudo apt install aria2
 
 chmod +x [setup.sh](https://setup.sh)
 
