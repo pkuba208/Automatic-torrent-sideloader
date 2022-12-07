@@ -7,8 +7,8 @@ echo '
     \:  |  \        /  |:  __   \ |:  __   \ (:      "||    \    \ |   \:  |   (:      "||:  __   \      /" \   :)(:      "|    \:  |     /\\ __ //\  /|__/ \     
      \__|   \"_____/   |__|  \___)|__|  \___) \_______) \___|\____\)    \__|    \_______)|__|  \___)    (_______/  \_______)     \__|    (__________)(_______)                                                                                                                                                                                                                                                                                                                                       
 '
-echo Click to continue
-pause
+echo FUCK COPYRIGHT, pkuba208
+sleep 5s
 mkdir quest2downloads
 sudo apt install adb
 sudo apt install aria2
