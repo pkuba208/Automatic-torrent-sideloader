@@ -1,6 +1,6 @@
 @echo off
-echo FUCK COPYRIGHT, pkuba208
-echo Before we start in the windows version you have to download the torrent file manually and paste it into the directory where the script is contained, because of a bug in aria2c's windows version 
+type logo.txt
+echo Before we start in the windows version you have to download the torrent file manually and paste it into the directory where the script is contained, because of a bug in aria2's windows version 
 echo Hello, what directory is the script stored in?
 set /p dir=
 echo The directory you have entered is %dir%
