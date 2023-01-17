@@ -19,8 +19,11 @@ echo What is the name of the download directory containing the OBB file director
 read download
 echo "$download"
 cd "$download"
-echo Sideloading apk...
-adb install *.apk
+ls
+echo What is the name of the apk file?
+read apkname
+adb push $apkname /data/local/tmp
+adb shell pm install "/data/local/tmp/$apkname"
 echo Apk sideloading Complete
 echo which one is the OBB folder?
 ls
@@ -30,3 +33,5 @@ echo obb directory is named $OBB
 echo pushing OBB directory to your headset
 adb push $OBB /sdcard/Android/obb/
 echo SUCCESS
+
+
