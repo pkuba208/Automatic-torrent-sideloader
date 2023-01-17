@@ -22,8 +22,11 @@ cd "$download"
 ls
 echo What is the name of the apk file?
 read apkname
-adb push $apkname /data/local/tmp
-adb shell pm install "/data/local/tmp/$apkname"
+file="$apkname"
+newfile=$(echo $file | tr -d ' ')
+mv "$file" "$newfile"
+adb push "$newfile" /data/local/tmp
+adb shell pm install "/data/local/tmp/$newfile"
 echo Apk sideloading Complete
 echo which one is the OBB folder?
 ls
@@ -33,5 +36,3 @@ echo obb directory is named $OBB
 echo pushing OBB directory to your headset
 adb push $OBB /sdcard/Android/obb/
 echo SUCCESS
-
-
