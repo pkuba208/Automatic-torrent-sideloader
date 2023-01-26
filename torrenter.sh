@@ -1,15 +1,21 @@
 #!/bin/bash
 # download torrent
-echo '
- ___________  ______     _______    _______    _______  _____  ___  ___________  _______   _______
-("     _   ")/    " \   /"      \  /"      \  /"     "|(\"   \|"  \("     _   ")/"     "| /"      \
- )__/  \\__/// ____  \ |:        ||:        |(: ______)|.\\   \    |)__/  \\__/(: ______)|:        |
-    \\_ /  /  /    ) :)|_____/   )|_____/   ) \/    |  |: \.   \\  |   \\_ /    \/    |  |_____/   )
-    |.  | (: (____/ //  //      /  //      /  // ___)_ |.  \    \. |   |.  |    // ___)_  //      /
-    \:  |  \        /  |:  __   \ |:  __   \ (:      "||    \    \ |   \:  |   (:      "||:  __   \
-     \__|   \"_____/   |__|  \___)|__|  \___) \_______) \___|\____\)    \__|    \_______)|__|  \___)
-'
+cat logo.txt
 echo FUCK COPYRIGHT, pkuba208
+echo -e "\nFirst of all: Do you want to use adb over USB or wireless adb?"
+echo -e "\n1 - Adb over USB"
+echo -e "\n2 - Wireless adb"
+read selectadb
+if [ "$selectadb" -eq 2 ]; then
+    read -n 1 -s -p "Plug in your quest via USB to set it to wireless adb mode and pull its IP. After you've plugged it in press any key to continue"
+    IP_ADDRESS=$(adb shell ip -f inet addr show wlan0 | grep -Po 'inet \K[\d.]+')
+    adb tcpip 5555
+    read -n 1 -s -p "Now unplug your device and press any key to continue"
+    echo -e  "\nYour device ip is $IP_ADDRESS"
+    adb connect $IP_ADDRESS:5555
+    fi
+    
+
 echo Hello, what magnet link shall I download? Insert magnet link
 read magnet
 aria2c --seed-time=0 -d quest2downloads $magnet 
