@@ -1,4 +1,48 @@
 @echo off
+setlocal enabledelayedexpansion
+
+:menu
+echo.
+echo 1. Wireless adb
+echo 2. Adb over USB
+echo 3. Exit
+echo.
+set /p choice=Enter your choice: 
+
+if "%choice%"=="1" (
+    echo You chose option 1
+    echo Please connect your quest 2 to your pc using a usb cable
+    goto wadb
+    pause
+    goto main
+)
+
+if "%choice%"=="2" (
+    echo You chose option 2
+    adb usb
+    pause
+    goto main
+)
+
+if "%choice%"=="3" (
+    exit
+)
+
+
+:wadb
+rem Get device IP
+FOR /F "tokens=2 delims= " %%i in ('adb shell ip -f inet addr show wlan0 ^| findstr "inet"') do set IP_ADDRESS=%%i
+
+echo [DEBUG] with /24 is !IP_ADDRESS!
+set IP2=%IP_ADDRESS:~0,-3%
+
+echo [DEBUG] without /24 !IP2!
+pause
+adb tcpip 5555
+adb connect !IP2!:5555
+echo Now you can disconnect your quest 2 from your computer
+pause
+:main
 powershell -Command "& {Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.Interaction]::InputBox('Torrenter, what directory is the script stored in?', 'Torrenter')}" > %TEMP%\out2.tmp
 set /p scriptdir=<%TEMP%\out2.tmp
 set msgBoxArgs="& {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('You have entered: %scriptdir%', 'Torrenter');}"
