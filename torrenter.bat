@@ -30,6 +30,8 @@ if "%choice%"=="3" (
 
 
 :wadb
+REM It took me wayy too much time to port this to Windows. Fuck Windows
+REM I'm able to do this much faster and with fewer lines on linux...
 rem Get device IP
 FOR /F "tokens=2 delims= " %%i in ('adb shell ip -f inet addr show wlan0 ^| findstr "inet"') do set IP_ADDRESS=%%i
 
@@ -43,6 +45,10 @@ adb connect !IP2!:5555
 echo Now you can disconnect your quest 2 from your computer
 pause
 :main
+REM this is some grade A fuckery here.
+REM This is a very clunky workaround, but it works
+REM It saves the user input from the popup to a temp file, then reads it and sets it as a variable
+REM Integrating VBScript into batch is a hell of a chore
 powershell -Command "& {Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.Interaction]::InputBox('Torrenter, what directory is the script stored in?', 'Torrenter')}" > %TEMP%\out2.tmp
 set /p scriptdir=<%TEMP%\out2.tmp
 set msgBoxArgs="& {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('You have entered: %scriptdir%', 'Torrenter');}"
