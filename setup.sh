@@ -12,4 +12,5 @@ sleep 5s
 mkdir quest2downloads
 sudo apt install adb
 sudo apt install aria2
+sud apt install zenity
 echo DONE
