@@ -1,0 +1,5 @@
+@echo off
+setlocal enabledelayedexpansion
+echo Although the PCVR downloads are provided by ARMAGEDDON, I am in no way affiliated with them.
+echo -e "\nThis is just a fan project."
+pause
