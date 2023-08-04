@@ -1,6 +1,7 @@
 # Automatic-torrent-sideloader
 I created a small script that automatically sideloads a game to your quest from a magnet link!
 The steps to use my script:
+
 EDIT: This project is still alive. I just don't know what to add honestly
 
 Type in the commands:
