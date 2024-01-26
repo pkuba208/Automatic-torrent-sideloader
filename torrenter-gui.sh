@@ -1,7 +1,6 @@
 #!/bin/bash
 # download torrent
 cat logo.txt
-echo FUCK COPYRIGHT, pkuba208
 echo -e "\nFirst of all: Do you want to use adb over USB or wireless adb?"
 echo -e "\n1 - Adb over USB"
 echo -e "\n2 - Wireless adb"
